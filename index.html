@@ -8,6 +8,9 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;500&family=Public+Sans:wght@500&family=Noto+Sans+SC:wght@500&family=Noto+Serif+SC&family=Spline+Sans+Mono&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome for music icon -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
   <style>
     /* ========== RESET & VARIABLES ========== */
     * { margin: 0; padding: 0; border: 0; }
@@ -92,6 +95,18 @@
     }
     nav a { color: var(--color-3); }
     nav a:hover { color: var(--color-2); }
+
+     #music-icon {
+      font-size: 40px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      cursor: pointer;
+      color: #333;
+    }
+    #music-icon:hover {
+      color: #007bff;
+    }
 
     /* ========== HERO ========== */
     .hero {
@@ -255,6 +270,8 @@
         <li><a href="#about">About</a></li>
         <li><a href="#album">Albums</a></li>
         <li><a href="#contact">Contact</a></li>
+        <i id="music-icon" class="fas fa-music"></i>
+        <audio id="music-audio" src="music.mp3" preload="auto"></audio>
       </ul>
     </nav>
   </header>
@@ -400,6 +417,21 @@ document.addEventListener('DOMContentLoaded', () => {
     io.observe(el);
   });
 });
+
+ document.addEventListener('DOMContentLoaded', () => {
+      const musicIcon = document.getElementById('music-icon');
+      const musicAudio = document.getElementById('music-audio');
+
+      musicIcon.addEventListener('click', () => {
+        if (musicAudio.paused) {
+          musicAudio.play();
+          musicIcon.classList.replace('fa-music', 'fa-pause');  // Change icon to pause when playing
+        } else {
+          musicAudio.pause();
+          musicIcon.classList.replace('fa-pause', 'fa-music');  // Change icon back to music when paused
+        }
+      });
+    });
 </script>
 
 </body>
