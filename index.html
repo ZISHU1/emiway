@@ -13,7 +13,7 @@
 
   <style>
     /* ========== RESET & VARIABLES ========== */
-    * { margin: 0; padding: 0; border: 0; }
+    * { margin: 0; padding: 0; border: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     :root {
       --color-1: #fff;
@@ -97,16 +97,15 @@
     nav a:hover { color: var(--color-2); }
 
      #music-icon {
-      font-size: 40px;
-      position: fixed;
-      bottom: 20px;
-      right: 0;
-      cursor: pointer;
-      color: #333;
-    }
-    #music-icon:hover {
-      color: #007bff;
-    }
+  position: fixed;
+  bottom: 1rem;      /* use rem so it scales */
+  right: 1rem;       /* give it the same padding as your body */
+  font-size: 2.5rem; /* or whatever */
+  cursor: pointer;
+}
+    #music-icon:hover {  
+      color: #007bff;  
+    } 
 
     /* ========== HERO ========== */
     .hero {
@@ -264,17 +263,18 @@
 
   <!-- Header -->
   <header>
-    <div id="header-title">EMIWAY BANTAI</div>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#album">Albums</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <i id="music-icon" class="fas fa-music"></i>
-        <audio id="music-audio" src="music.mp3" preload="auto"></audio>
-      </ul>
-    </nav>
-  </header>
+  <div id="header-title">EMIWAY BANTAI</div>
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#album">Albums</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <!-- moved out of the ul: -->
+  <i id="music-icon" class="fas fa-music"></i>
+  <audio id="music-audio" src="music.mp3" preload="auto"></audio>
+</header>
 
   <!-- Hero -->
   <section class="hero" id="home">
